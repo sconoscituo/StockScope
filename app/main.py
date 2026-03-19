@@ -11,6 +11,7 @@ import json
 from app.config import settings
 from app.database import init_db, AsyncSessionLocal
 from app.routers import users, stocks, analysis, portfolio, payments
+from app.middleware.security_headers import SecurityHeadersMiddleware
 
 logging.basicConfig(
     level=logging.DEBUG if settings.DEBUG else logging.INFO,
@@ -147,6 +148,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+app.add_middleware(SecurityHeadersMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
