@@ -10,7 +10,7 @@ import json
 
 from app.config import settings
 from app.database import init_db, AsyncSessionLocal
-from app.routers import users, stocks, analysis
+from app.routers import users, stocks, analysis, portfolio, payments
 
 logging.basicConfig(
     level=logging.DEBUG if settings.DEBUG else logging.INFO,
@@ -158,6 +158,8 @@ app.add_middleware(
 app.include_router(users.router)
 app.include_router(stocks.router)
 app.include_router(analysis.router)
+app.include_router(portfolio.router)
+app.include_router(payments.router)
 
 
 @app.get("/", tags=["health"])

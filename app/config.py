@@ -17,6 +17,10 @@ class Settings(BaseSettings):
     # Signal threshold for telegram notification
     BUY_SIGNAL_NOTIFY_THRESHOLD: int = 80
 
+    # 포트원(PortOne) 결제 연동
+    PORTONE_API_KEY: str = ""
+    PORTONE_API_SECRET: str = ""
+
     class Config:
         env_file = ".env"
         extra = "ignore"
