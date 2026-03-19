@@ -10,7 +10,7 @@ import json
 
 from app.config import settings
 from app.database import init_db, AsyncSessionLocal
-from app.routers import users, stocks, analysis, portfolio, payments
+from app.routers import users, stocks, analysis, portfolio, payments, websocket
 from app.middleware.security_headers import SecurityHeadersMiddleware
 
 logging.basicConfig(
@@ -162,6 +162,7 @@ app.include_router(stocks.router)
 app.include_router(analysis.router)
 app.include_router(portfolio.router)
 app.include_router(payments.router)
+app.include_router(websocket.router)
 
 
 @app.get("/", tags=["health"])
